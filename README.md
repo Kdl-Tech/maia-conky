@@ -42,6 +42,25 @@ Lancement manuel :
 conky -c ~/.config/conky/maia.conf
 ```
 
+## 🎨 Harmonisation du bureau (Cinnamon)
+
+Un script optionnel accorde **le panneau (barre) et les icônes** au thème du conky
+(fond `#060B0E`, accent cyan `#00E5FF`, vert `#00FF99`) :
+
+```bash
+./desktop/install-desktop.sh
+cinnamon --replace &   # recharger pour tout voir
+```
+
+Il agit **sans toucher aux thèmes système** (forks dans `~/.themes` et `~/.local/share/icons`),
+crée un backup horodaté et est idempotent :
+
+- **Barre** → fond sombre semi-transparent + **liseré cyan** (thème `Maia-Aqua`, fork de `Mint-Y-Dark-Aqua`)
+- **Bouton menu** → icône **anneau néon cyan** (`desktop/icons/maia-menu-ring.svg`)
+- **Dossiers** → recoloriés **cyan** (overlay `Papirus-Maia` héritant de `Papirus-Dark`)
+
+> Prérequis : paquets `mint-themes` (Mint-Y-Dark-Aqua) et `papirus-icon-theme`.
+
 ## 🗂️ Structure
 
 | Fichier | Rôle |
@@ -51,12 +70,15 @@ conky -c ~/.config/conky/maia.conf
 | `bin/maia-weather.sh` | Météo (wttr.in, cache 10 min) |
 | `bin/maia-wan.sh` | IP externe / pays / FAI (ip-api, cache 5 min) |
 | `bin/maia-cal.sh` | Mini-calendrier du mois (Python) |
+| `desktop/install-desktop.sh` | Harmonise panneau + icônes Cinnamon |
+| `desktop/icons/maia-menu-ring.svg` | Icône anneau cyan du bouton menu |
 
 ## ⚙️ Personnalisation
 
 - **Couleurs** : `color1`/`color2`/`color3` dans `conky/maia.conf`.
-- **Météo** : par défaut géolocalisée par IP. Forcer une ville :
-  `export MAIA_WEATHER_LOCATION="Paris"` avant de lancer conky.
+- **Météo** : par défaut géolocalisée par IP — elle **suit donc l'IP du VPN** quand il est actif.
+  Pour la figer sur ta ville (recommandé si tu utilises un VPN) :
+  `export MAIA_WEATHER_LOCATION="Les Abymes"` avant de lancer conky.
 - **Position/taille** : `alignment`, `gap_x`, `gap_y`, `maximum_width`.
 
 ## 📄 Licence
