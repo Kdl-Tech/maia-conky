@@ -1,0 +1,4 @@
+# caches runtime
+*.log
+*.tmp
+.cache/
