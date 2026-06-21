@@ -15,7 +15,7 @@ cp "$SRC/conky/maia-rings.lua" "$CONKY_DIR/maia-rings.lua"
 
 # 2. Scripts
 cp "$SRC/bin/"*.sh "$BIN_DIR/"
-chmod +x "$BIN_DIR/"maia-weather.sh "$BIN_DIR/"maia-wan.sh "$BIN_DIR/"maia-cal.sh
+chmod +x "$BIN_DIR/"maia-weather.sh "$BIN_DIR/"maia-wan.sh "$BIN_DIR/"maia-cal.sh "$BIN_DIR/"maia-disks.sh
 
 echo "✓ Fichiers installés."
 
